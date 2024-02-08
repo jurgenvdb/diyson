@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>No network connected, please select a network and connect to it.</p>
+    <label>SSID:</label>
+    <select id="ssid">
+        <option value="ssid1">ssid1</option>
+        <option value="ssid2">ssid2</option>
+        <option value="ssid3">ssid3</option>
+    </select>
+    <br>
+    <label>Password:</label>
+    <input type="password" id="password">
+    <br>
+    <button onclick="connect()">Connect</button>
+    <br>
+    <p id="status"></p>
+
+    <script>
+        function connect() {
+            var ssid = document.getElementById("ssid").value;
+            var password = document.getElementById("password").value;
+            window.location.href = window.location + "/?ssid=" + ssid + "&password=" + password;
+        }
+            
+    </script>
+</body>
+</html>
