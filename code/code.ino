@@ -5,7 +5,7 @@ void setup() {
   while (!Serial);
   EEPROM.begin(500);
 
-  // wifi_configure("Habbo Hotel", "Qu!ck!3W33");
+  wifi_configure("Habbo Hotel", "Qu!ck!3W33");
 
   if (!wifi_is_configured()) {
     Serial.println("Setting up configuration server");

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>No network connected, please select a network and connect to it.</p>
+  <label>SSID:</label>
+  <select id="ssid">
+
+    <!-- !!!UNCOMMENT THE NEXT PART IN THE INO FILE AND REMOVE THE OPTIONS, 
+        THESE OPTIONS ARE PLACEHOLDERS!!! -->
+
+<!-- )=====";
+
+const char HTMLPart2[] =
+R"=====( -->
+    <option value="SSID1">SSID1</option>
+    <option value="SSID2">SSID2</option>
+    <option value="SSID3">SSID3</option>
+  </select>
+  <br>
+  <label>Password:</label>
+  <input type="password" id="password">
+  <br>
+  <button onclick="connect()">Connect</button>
+  <br>
+  <p id="status"></p>
+
+  <script>
+    function connect() {
+      var ssid = document.getElementById("ssid").value;
+      var password = document.getElementById("password").value;
+      window.location.href = window.location + "?ssid=" + ssid + "&password=" + password + "~";
+    }
+          
+  </script>
+</body>
+</html>
