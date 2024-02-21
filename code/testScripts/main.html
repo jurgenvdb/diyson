@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
-<script src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- <script src="https://www.gstatic.com/charts/loader.js"></script> -->
 <body>
-    <div id="main_controls" style="display: block;">
+    <div id="main_controls" style="display: none;">
         <h3>Main Control</h3>
         <table>
             <tr class="slider_row">
@@ -105,7 +106,7 @@
 
     <!-- <br><br><br><br><br> -->
 
-    <div id="settings" style="display: none;">
+    <div id="settings" style="display: block;">
         <h4>Network Settings</h4>
         <div id="network_settings">
             <form id="network_settings">
@@ -126,8 +127,9 @@
         <div>
             <h4>Graphs</h4>
             <div id="graphs">
-                <canvas id="brightness_graph"></canvas>
-                <canvas id="temperature_graph"></canvas>
+                <div id="brightness_graph"></div>
+                <!-- <canvas id="brightness_graph"></canvas> -->
+                <!-- <canvas id="temperature_graph"></canvas> -->
             </div>
         </div>
     </div>

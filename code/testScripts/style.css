@@ -36,8 +36,8 @@ body {
 
 #main_controls .slider {
     height: 80vh;
-    writing-mode: vertical-lr;
-    /* appearance: slider-vertical; */
+    /* writing-mode: bt-lr; */
+    appearance: slider-vertical;
 }
 
 #alarm_clock {
