@@ -1,8 +1,94 @@
-.main_controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #1e034b;
-    border-bottom: 1px solid #e0e0e0;
+:root {
+    --main-color: #0d3739;
+    --secondary-color: #353434;
+    /* --tertiary-color: #DFD3C3;
+    --quaternary-color: #F0ECE3; */
+    --text-color: #f2f2f2;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-color);
+}
+
+#main_controls {
+    color: var(--text-color);
+    width: 100%;
+    text-align: center;
+}
+
+#main_controls h3 {
+    font-size: 2vh;
+}
+
+#main_controls table {
+    width: 100%;
+}
+
+#main_controls table .checkbox {
+    width: 100%;
+    height: 80vh;
+}
+
+#main_controls .slider {
+    height: 80vh;
+    writing-mode: vertical-lr;
+    /* appearance: slider-vertical; */
+}
+
+#alarm_clock {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+#settings {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+#bottom_menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    overflow: auto;
+    height: 6vh;
+}
+
+#bottom_menu a {
+    float: left;
+    text-decoration: none;
+    font-size: 17px;
+    width: 33.33%;
+    text-align: center;
+    line-height: 6vh;
+    color: var(--text-color);
+}
+
+#bottom_menu a:hover {
+    background-color: var(--text-color);
+    color: var(--main-color);
+}
+
+#brightness_graph {
+    width: 80vh;
+    /* height: 80vh; */
+    background-color: white;
+    color: var(--text-color);
+}
+
+/* #temperature_graph {
+    width: 80%;
+    background-color: white;
+    color: var(--text-color);
+} */
+
+canvas {
+    /* create a distance between the edge of the screen and the canvas */
+    margin: 10px;
 }
