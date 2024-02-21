@@ -34,6 +34,10 @@ R"=====(
 </html>
 )====="};
 
+struct htmlPiece {
+  
+}
+
 const char main_html[] = 
 R"=====(
 <!DOCTYPE html>

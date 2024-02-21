@@ -175,7 +175,7 @@ void wifi_connect() {
 }
 
 String processor(const String& var) {
-  // Serial.println(var);
+  Serial.println(var);
   if (var == "PLACEHOLDER_POWERED") {
     return (lamp_state.powered) ? String("checked") : String();
   } else if(var == "PLACEHOLDER_BRIGHTNESS") {
@@ -192,7 +192,10 @@ void notFound(AsyncWebServerRequest *request) {
 
 void setup_main_server() {
   main_server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send_P(200, "text/html", main_html, processor);
+    Serial.println(main_html);
+    AsyncResponseStream *response = request->beginResponseStream("text/html");
+    response->;
+    request->send(, "text/html", main_html, processor);
   });
   main_server.on("/update", HTTP_GET, [](AsyncWebServerRequest *request) {
     // Serial.println("change made!");
@@ -204,16 +207,16 @@ void setup_main_server() {
     }
     if (outputType == "powered") {
       lamp_state.powered = state;
-      // Serial.print("Changed lamp state powered to: ");
-      // Serial.println(lamp_state.powered);
+      Serial.print("Changed lamp state powered to: ");
+      Serial.println(lamp_state.powered);
     } else if (outputType == "brightness") {
       lamp_state.brightness = state;
-      // Serial.print("Changed lamp state brightness to: ");
-      // Serial.println(lamp_state.brightness);
+      Serial.print("Changed lamp state brightness to: ");
+      Serial.println(lamp_state.brightness);
     } else if (outputType == "temperature") {
       lamp_state.temperature = state;
-      // Serial.print("Changed lamp state temperature to: ");
-      // Serial.println(lamp_state.temperature);
+      Serial.print("Changed lamp state temperature to: ");
+      Serial.println(lamp_state.temperature);
     }
     request->send(200, "text/html", "request sent!");
   });
