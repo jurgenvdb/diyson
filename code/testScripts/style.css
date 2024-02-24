@@ -75,20 +75,18 @@ body {
     color: var(--main-color);
 }
 
-#brightness_graph {
-    width: 80vh;
-    /* height: 80vh; */
-    background-color: white;
-    color: var(--text-color);
+#graphs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* #temperature_graph {
-    width: 80%;
-    background-color: white;
-    color: var(--text-color);
-} */
+#brightness_graph {
+    width: 80vh;
+    margin: 0 auto;
+}
 
-canvas {
-    /* create a distance between the edge of the screen and the canvas */
-    margin: 10px;
+#temperature_graph {
+    width: 80vh;
+    margin: 0 auto;
 }
