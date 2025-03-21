@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small test for web and driver</title>
+</head>
+<body>
+    <form>
+        <input type="number" min="0", max="255" value="0">
+        <input type="submit">
+    </form>
+</body>
+<script>
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var inputValue = document.querySelector('input[type="number"]').value;
+    var url = '/brightness/' + inputValue;
+    // make the browser go to the url
+    window.location.href += url
+});
+</script>
+</html>

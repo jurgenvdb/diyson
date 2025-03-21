@@ -194,8 +194,8 @@ void setup_main_server() {
   main_server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     Serial.println(main_html);
     AsyncResponseStream *response = request->beginResponseStream("text/html");
-    response->;
-    request->send(, "text/html", main_html, processor);
+    // response->;
+    request->send("text/html", main_html, processor);
   });
   main_server.on("/update", HTTP_GET, [](AsyncWebServerRequest *request) {
     // Serial.println("change made!");
