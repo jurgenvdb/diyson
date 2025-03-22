@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MicroPython Slider</title>
+</head>
+
+<body>
+    <h3>Warm white</h3>
+    <input type="range" id="WarmWhiteSlider" min="0" max="100" value="50">
+    <p>Slider Value: <span id="WarmWhiteSliderValue">50</span></p>
+    <h3>Cold white</h3>
+    <input type="range" id="ColdWhiteSlider" min="0" max="100" value="50">
+    <p>Slider Value: <span id="ColdWhiteSliderValue">50</span></p>
+    <script>
+        const wwSlider = document.getElementById('WarmWhiteSlider');
+        const wwSliderValue = document.getElementById('WarmWhiteSliderValue');
+        const cwSlider = document.getElementById('ColdWhiteSlider');
+        const cwSliderValue = document.getElementById('ColdWhiteSliderValue');
+
+        function updateValues() {
+            wwSliderValue.textContent = wwSlider.value;
+            cwSliderValue.textContent = cwSlider.value;
+            fetch('/update_values', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    wwValue: wwSlider.value,
+                    cwValue: cwSlider.value
+                }),
+            }).then(response => {
+                if (!response.ok) {
+                    console.error("Error sending data");
+                }
+                return response.json();
+            }).then(data => {
+                console.log("Server response:", data);
+            }).catch(error => {
+                console.error("Fetch error:", error);
+            });
+        }
+
+        wwSlider.oninput = updateValues;
+        cwSlider.oninput = updateValues;
+
+    </script>
+</body>
+
+</html>
