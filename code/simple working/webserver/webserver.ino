@@ -3,16 +3,26 @@
 #include <ArduinoJson.h> // For parsing JSON
 
 // WiFi credentials
-const char* ssid = "Bibliotheek";
-const char* password = "Vakantie";
+const char* ssid = "Habbo Hotel";
+const char* password = "Qu!ck!3W33";
 
 WebServer server(80); // Web server on port 80
 
-int wwBrightness = 0;
-int cwBrightness = 0;
-int lastUpdate = millis();
-bool showww = true;
-bool showcw = !showww;
+int cwBrightness = 50;
+int wwBrightness = 50;
+int lastCwBrightness = cwBrightness;
+int lastWwBrightness = wwBrightness;
+int lastUpdate = millis(); // used for debug
+bool built_in_led = true; // used for debug
+bool showcw = false;
+bool showww = !showcw;
+
+
+const int cwPin = 0;
+const int wwPin = 1;
+const int onboardLED = 10; // used for debug
+const int freq = 1000;
+const int resolution = 8;
 
 void handleRoot() {
   String html = "<!DOCTYPE html><html><head><title>Slider Control</title></head><body>";
@@ -80,8 +90,8 @@ void handleUpdate() {
     Serial.print(wwValue);
     Serial.print("  warm white: ");
     Serial.println(cwValue);
-    wwBrightness = wwValue;
-    cwBrightness = cwValue;
+    cwBrightness = map(cwValue, 0, 100, 0, 255);
+    wwBrightness = map(wwValue, 0, 100, 0, 255);
     server.send(200, "text/plain", "OK");
   } else {
     server.send(405, "text/plain", "Method Not Allowed");
@@ -89,7 +99,39 @@ void handleUpdate() {
 }
 
 void updateLedValues() {
-  if (showww)
+  int millisBetween = 500;
+  bool update = lastWwBrightness != wwBrightness || lastCwBrightness != cwBrightness;
+  if (built_in_led) {
+    if (millis() > lastUpdate + millisBetween) {
+      lastUpdate = millis();
+      showww = !showww;
+      showcw = !showcw;
+      update = true;
+    }
+    if (showww) {
+      if (update) {
+        Serial.print("Displaying on the on board led: Warm white brightness: ");
+        Serial.println(wwBrightness);
+        ledcWrite(onboardLED, wwBrightness);
+        lastWwBrightness = wwBrightness;
+      }
+    } else if (showcw) {
+      if (update) {
+        Serial.print("Displaying on the on board led: Cool white brightness: ");
+        Serial.println(cwBrightness);
+        ledcWrite(onboardLED, cwBrightness);
+        lastCwBrightness = cwBrightness;
+      }
+    } else {
+      Serial.println("ERROR: no brightness is displayed with the on board led");
+      Serial.print("showcw value: ");
+      Serial.println(showcw);
+      Serial.print("  showww value: ");
+      Serial.print(showww);
+    }
+  }
+  ledcWrite(cwPin, cwBrightness);
+  ledcWrite(wwPin, wwBrightness);
 }
 
 void setup() {
@@ -110,6 +152,10 @@ void setup() {
   server.on("/", handleRoot);
   server.on("/update_values", HTTP_POST, handleUpdate);
 
+  ledcAttach(cwPin, freq, resolution);
+  ledcAttach(wwPin, freq, resolution);
+  ledcAttach(onboardLED, freq, resolution);
+
   server.begin();
   Serial.println("Web server started");
 }
@@ -118,4 +164,5 @@ void setup() {
 
 void loop() {
   server.handleClient();
+  updateLedValues();
 }
