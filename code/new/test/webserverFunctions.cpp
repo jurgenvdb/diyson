@@ -3,11 +3,6 @@
 #include <WebServer.h>
 #include <ArduinoJson.h>
 #include "html.h"
-// #ifndef LEDDRIVERFUNCTIONS_cpp
-  #include "LEDDriverFunctions.cpp"
-// #endif
-
-#define WEBSERVERFUNCTIONS_CPP
 
 WebServer server(80);
 

@@ -1,9 +1,6 @@
-#ifndef WEBSERVERFUNCTIONS_CPP
-  #include "webserverFunctions.cpp"
-#endif
-// #ifndef LEDDRIVERFUNCTIONS_CPP
-//   #include "LEDDriverFunctions.cpp"
-// #endif
+#include "LEDDriverFunctions.h"
+#include "webserverFunctions.h"
+
 
 void setup() {
   Serial.begin(115200);
