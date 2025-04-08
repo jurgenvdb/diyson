@@ -1,11 +1,19 @@
+#include "LEDInfo.h"
 #include "LEDDriverFunctions.h"
 #include "webserverFunctions.h"
 
 
+char* ssid = "Bibliotheek";
+char* pass = "Vakantie";
+// char* ssid = "Oneplus 12";
+// char* pass = "n58btsjv";
+// char* ssid = "Habbo Hotel";
+// char* ssid = "Qu!ck!3W33"l
+
 void setup() {
   Serial.begin(115200);
   while(!Serial);
-  Serial.println(connectWiFi("Oneplus 12", "n58btsjv"));
+  Serial.println(connectWiFi(ssid, pass));
   setupWebServer();
   setupDriver(0, 1);
 }

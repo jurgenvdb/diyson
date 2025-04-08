@@ -1,5 +1,3 @@
-#pragma once
-
 const char html[] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
 <html>

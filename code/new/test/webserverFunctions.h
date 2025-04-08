@@ -3,6 +3,7 @@
 #include <WebServer.h>
 #include <ArduinoJson.h>
 #include "html.h"
+#include "LEDInfo.h"
 
 IPAddress connectWiFi(char *ssid, char *password);
 void handleRoot();

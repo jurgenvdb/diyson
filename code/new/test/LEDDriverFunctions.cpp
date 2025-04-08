@@ -1,4 +1,5 @@
 #include "Arduino.h"
+// #include "LEDInfo.h"
 #include "LEDDriverFunctions.h"
 
 void setupDriver(int cool_white, int warm_white, int frequency, int resolution)
