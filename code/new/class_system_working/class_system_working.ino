@@ -113,13 +113,16 @@ public:
 
 void setup() {
   Serial.begin(115200);
-  Serial.println(webserver.connectWiFi("Bibliotheek", "Vakantie"));
+  // Serial.println(webserver.connectWiFi("Bibliotheek", "Vakantie"));
+  // Serial.println(webserver.connectWiFi("Bibliotheek", "Vakantie"));
+  Serial.println(webserver.connectWiFi("Habbo Hotel", "Qu!ck!3W33"));
   webserver.setupWebServer();
-  LEDdriver.setupDriver(0,1);
+  LEDdriver.setupDriver(0, 1);
 }
 
 void loop() {
   webserver.handleClient();
-  Serial.print("Cool white brightness: ");
-  Serial.println(led_info.cool_white_brightness);
+  // Serial.print("Cool white brightness: ");
+  // Serial.println(led_info.cool_white_brightness);
+  LEDdriver.updateBrightness();
 }

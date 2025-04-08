@@ -9,7 +9,7 @@ const char html[] PROGMEM = R"rawliteral(
 <body>
     <h2>Cool white slider</h2>
     <input type='range' id='cwSlider' min='0' max='255' value='0'><br>
-    <p>Cold white value: <span id='cwSliderValue'></span></p>
+    <p>Cool white value: <span id='cwSliderValue'></span></p>
     <h2>Warm white slider</h2>
     <input type='range' id='wwSlider' min='0' max='255' value='0'><br>
     <p>Warm white value: <span id='wwSliderValue'></span></p>
@@ -56,6 +56,7 @@ const char html[] PROGMEM = R"rawliteral(
                     console.error('Error fetching values:', error);
                 });
         }
+        getValues();
     </script>
 </body>
 
