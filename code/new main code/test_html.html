@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider input</title>
+    <style>
+        body {
+            background-color: #334;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+        }
+
+        div.sliderContainer {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            float: left;
+        }
+
+        input.brightnessSlider {
+            writing-mode: vertical-rl;
+            direction: rtl;
+            appearance: none;
+            margin: 10px 5%;
+            padding: 0;
+            background-color: rgba(255, 255, 255, .2);
+            cursor: row-resize;
+            overflow: hidden;
+            /* height: 300px; */
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                height: 0;
+            }
+        }
+
+        #warmWhite::-webkit-slider-thumb {
+            box-shadow: 0 300px 0 300px rgba(255, 179, 0, 0.2);
+        }
+
+        #coolWhite::-webkit-slider-thumb {
+            box-shadow: 0 300px 0 300px rgba(0, 255, 255, 0.2);
+        }
+
+        p.sliderInfo {
+            background-color: rgba(#fff, 1);
+            margin: 0;
+            padding-top: 5px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderContainer">
+        <p class="sliderInfo">Warm white</p>
+        <input type="range" min="0" max="1000" class="brightnessSlider" id="warmWhite">
+        <p class="sliderInfo" id="warmWhiteValue">0</p>
+    </div>
+    <div class="sliderContainer">
+        <p class="sliderInfo">Cool white</p>
+        <input type="range" min="0" max="1000" class="brightnessSlider" id="coolWhite">
+        <p class="sliderInfo" id="coolWhiteValue">0</p>
+    </div>
+    <script src="test_script.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include <ArduinoJson.h>
-#include "new_html.h"
+#include "html.h"
 
 class LEDInfo {
 public:
@@ -113,20 +113,16 @@ public:
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Welcome, Diyson is booting...");
   // Serial.println(webserver.connectWiFi("Bibliotheek", "Vakantie"));
-  Serial.println(webserver.connectWiFi("OnePlus 12", "n58btsjv"));
-  // Serial.println(webserver.connectWiFi("Habbo Hotel", "Qu!ck!3W33"));
+  // Serial.println(webserver.connectWiFi("Bibliotheek", "Vakantie"));
+  Serial.println(webserver.connectWiFi("Habbo Hotel", "Qu!ck!3W33"));
   webserver.setupWebServer();
   LEDdriver.setupDriver(0, 1);
-  Serial.println("Booted! Diyson is ready to use!");
 }
 
 void loop() {
   webserver.handleClient();
-  Serial.print("Warm white brightness: ");
-  Serial.print(led_info.warm_white_brightness);
-  Serial.print("/t/tCool white brightness: ");
-  Serial.println(led_info.cool_white_brightness);
+  // Serial.print("Cool white brightness: ");
+  // Serial.println(led_info.cool_white_brightness);
   LEDdriver.updateBrightness();
 }
